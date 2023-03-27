@@ -1,11 +1,11 @@
-# avatarpicker
+# Avatar Picker
 A dummy User Profile app where the user picks a custom Avatar / Unique Picture that they can see when they login
 
 This repo is based on create react app / redux-typescript-mui for ease of development.
 ```
 yarn create react-app . --template redux-typescript-mui
 ```
-# Usage
+## Usage
 To get started, do the following:
 ```
 yarn install
@@ -14,15 +14,25 @@ yarn start
 
 The development server will start on port 3000.
 
-# Running tests
+## Running tests
 To run the tests type
 ```
 yarn test
 ```
 
+Initial Setup:
+--------------
+The following commands were used to seed this project:
+```
+npx create-react-app . --template redux-typescript
+yarn add @mui/material @mui/styled-engine-sc styled-components
+yarn add @fontsource/roboto
+yarn add @mui/icons-material
+yarn add cypress
+```
 
-Requirements:
--------------
+Project Requirements:
+---------------------
 
 • Allow the user to enter their Name, Surname, and a Preferred Topic. Possible values for the topic are: Travel, Cars, Wildlife, Technology and Other. 
 
@@ -53,7 +63,7 @@ Sample CI tests:
 ---------
 
 
-TODO:
+## TODO:
 [ ] Build out first view with cra, that is the form route for /edit
 [ ] Add in test for that
 [ ] Create Picture Picker component
@@ -68,7 +78,7 @@ TODO:
 [ ] Review work
 [ ] Run pretify against code
 
-Planned Features:
+### Planned Features:
 [ ] Form with Name Input, Surname Input, and Preferred Topic
 [ ] Preferred Topic Dropdown Component
 [ ] Image Viewer & Accept/Reject Component
