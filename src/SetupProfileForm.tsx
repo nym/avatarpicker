@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Zoom from "@mui/material/Zoom";
+import Grid from "@mui/material/Grid";
 
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
@@ -19,16 +20,16 @@ export default function SetupProfileForm() {
     exit: theme.transitions.duration.leavingScreen,
   };
 
+  const [selectTopic, setSelectTopic] = React.useState("");
   const [topic, setTopic] = React.useState("");
+
   let otherSelected:boolean = false;
 
   const handleChange = (event: SelectChangeEvent) => {
-    if (event.target.value == "other") {
-        otherSelected = true;
-    } else {
-        otherSelected = false;
+    setSelectTopic(event.target.value);
+    if (event.target.value != 'other') {
+        setTopic(event.target.value);
     }
-    setTopic(event.target.value);
   };
 
   const handleOtherChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,31 +40,36 @@ export default function SetupProfileForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      fname: data.get("fname"),
-      lname: data.get("lname"),
+        firstName: data.get("firstName"),
+        lastName: data.get("lastName"),
     });
   };
   
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        id="fname"
-        label="Name"
-        name="fname"
-        autoFocus
-      />
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        name="lname"
-        label="Surname"
-        type="text"
-        id="lname"
-      />
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
+        <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Surname"
+                  name="lastName"
+                  autoComplete="family-name"
+                />
+              </Grid>
+        </Grid>
       <Zoom
         key={"pic"}
         in={true}
@@ -78,7 +84,7 @@ export default function SetupProfileForm() {
           <Select
             labelId="preferred-topic-label"
             id="preferred-topic-helper"
-            value={topic}
+            value={selectTopic}
             label="Preferred Topic"
             onChange={handleChange}
           >
@@ -97,6 +103,7 @@ export default function SetupProfileForm() {
           <Zoom in={otherSelected}
           >
             <div>
+                <div>{topic}</div>
                 <TextField
                     margin="normal"
                     required
