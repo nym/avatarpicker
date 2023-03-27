@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import SetupProfileForm from "./SetupProfileForm";
 import ProfilePhotoPicker from "./ProfilePhotoPicker";
+import UnsplashUploader from "./UnsplashReact";
 
 const theme = createTheme();
 
@@ -40,6 +41,7 @@ export default function SetupProfile() {
             <SetupProfileForm />
           </Box>
         </Grid>
+        <UnsplashUploader />
         <ProfilePhotoPicker />
       </Grid>
     </ThemeProvider>

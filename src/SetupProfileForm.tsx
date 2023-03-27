@@ -11,7 +11,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function SetupProfileForm() {
@@ -22,8 +22,6 @@ export default function SetupProfileForm() {
 
   const [selectTopic, setSelectTopic] = React.useState("");
   const [topic, setTopic] = React.useState("");
-
-  let otherSelected:boolean = false;
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectTopic(event.target.value);
@@ -91,6 +89,7 @@ export default function SetupProfileForm() {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
+            <MenuItem value={"travel"}>Travel</MenuItem>
             <MenuItem value={"sports"}>Sports</MenuItem>
             <MenuItem value={"cars"}>Cars</MenuItem>
             <MenuItem value={"wildlife"}>Wildlife</MenuItem>
@@ -121,6 +120,7 @@ export default function SetupProfileForm() {
           </Zoom>
         </FormControl>
       </Zoom>
+      <div hidden={!topic}>You picked { topic }</div>
     </Box>
   );
 }
