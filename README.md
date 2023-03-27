@@ -29,6 +29,7 @@ yarn add @mui/material @mui/styled-engine-sc styled-components
 yarn add @fontsource/roboto
 yarn add @mui/icons-material
 yarn add cypress
+yarn add unsplash-react
 ```
 
 Project Requirements:
@@ -64,7 +65,7 @@ Sample CI tests:
 
 
 ## TODO:
-[ ] Build out first view with cra, that is the form route for /edit
+[X] Build out first view with cra, that is the form route for /edit
 [ ] Add in test for that
 [ ] Create Picture Picker component
 [ ] Setup playbook?
@@ -79,10 +80,10 @@ Sample CI tests:
 [ ] Run pretify against code
 
 ### Planned Features:
-[ ] Form with Name Input, Surname Input, and Preferred Topic
+[X] Form with Name Input, Surname Input, and Preferred Topic
 [ ] Preferred Topic Dropdown Component
-[ ] Image Viewer & Accept/Reject Component
-[ ] Profile Editor Component
+[X] Image Viewer & Accept/Reject Component
+[x] SetupProfileForm Component
 [ ] Profile Component
 [ ] CRUD State management for profiles
 [ ] Unsplash Helpers with unsplash-react 
