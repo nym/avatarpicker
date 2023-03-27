@@ -100,10 +100,9 @@ export default function SetupProfileForm() {
             This will help you pick a unique photo for every time you login
           </FormHelperText>
           
-          <Zoom in={otherSelected}
+          <Zoom in={selectTopic === 'other'}
           >
             <div>
-                <div>{topic}</div>
                 <TextField
                     margin="normal"
                     required
