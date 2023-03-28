@@ -1,36 +1,33 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
 
-export interface UserState {
+export interface UserData {
   firstName?: string;
   lastName?: string;
   topic?: string;
+  customTopic?: string;
+  imageUrl?: string;
+}
+
+export interface UserState {
+  data: UserData;
 }
 
 const initialState: UserState = {
-  firstName: undefined,
-  lastName: undefined,
-  topic: undefined,
+  data: {}
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const userSlice: Slice<UserState, { setUserData: (state: UserState, action: PayloadAction<UserData>) => void }, string> = createSlice({
+  name: "user",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    setFirstName: (state, action: PayloadAction<string>) => {
-      state.firstName += action.payload;
-    },
-    setLastName: (state, action: PayloadAction<string>) => {
-      state.lastName += action.payload;
-    },
-    setTopic: (state, action: PayloadAction<string>) => {
-      state.topic += action.payload;
-    },
-  },
+    setUserData: (state: UserState, action: PayloadAction<UserData>) => {
+      state.data = action.payload;
+    }
+  }
 });
 
-export const { setFirstName, setLastName, setTopic } = userSlice.actions;
+export const { setUserData } = userSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

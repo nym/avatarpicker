@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
+import React from "react";
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import {
-  setFirstName,
-  setLastName,
-  setTopic,
-} from './userSlice';
+import { useAppDispatch } from "../../app/hooks";
 
 export function User() {
   //const count = useAppSelector(selectCount);
@@ -13,7 +8,7 @@ export function User() {
 
   return (
     <div>
-      User here 
+      User here
     </div>
   );
 }

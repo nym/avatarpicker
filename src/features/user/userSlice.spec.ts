@@ -1,34 +1,21 @@
-import userReducer, {
-  UserState,
-  setFirstName,
-  setLastName,
-  setTopic,
-} from './userSlice';
+import userReducer, { setUserData, UserState } from "./userSlice";
 
-describe('user reducer', () => {
+describe("user reducer", () => {
   const initialState: UserState = {
-    firstName: "Tom",
-    lastName: "Longson"
+    data: {
+      firstName: "Tom",
+      lastName: "Longson"
+    }
   };
-  it('should handle initial state', () => {
-    expect(userReducer(undefined, { type: 'unknown' })).toEqual({
+  it("should handle initial state", () => {
+    expect(userReducer(undefined, { type: "unknown" })).toEqual({
       value: 0,
-      status: 'idle',
+      status: "idle"
     });
   });
 
-  it('should handle setFirstName', () => {
-    const actual = userReducer(initialState, setFirstName('Todd'));
-    expect(actual.firstName).toEqual('Todd');
-  });
-
-  it('should handle setLastName', () => {
-    const actual = userReducer(initialState, setLastName('Todd'));
-    expect(actual.lastName).toEqual('Todd');
-  });
-
-  it('should handle setTopic', () => {
-    const actual = userReducer(initialState, setTopic('cars'));
-    expect(actual.topic).toEqual('cars');
+  it("should handle setUserData", () => {
+    const actual = userReducer(initialState, setUserData({ firstName: "Todd" }));
+    expect(actual.data.firstName).toEqual("Todd");
   });
 });
