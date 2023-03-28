@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
@@ -7,17 +8,27 @@ import Zoom from "@mui/material/Zoom";
 import { Fab } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import {FormContainer, TextFieldElement, useWatch} from 'react-hook-form-mui'
 import { createTheme } from "@mui/material/styles";
+
+import { FormProps } from "./FormProps";
+import {
+    useWatch,
+    useFormContext,
+  } from "react-hook-form-mui";
+  
 const theme = createTheme();
 
 export default function ProfilePhotoPicker() {
+    const data = useFormContext();
+
+    const [values, setValues] = useState<FormProps>();
+
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
-  const [firstName, lastName, topic] = useWatch({
-    name: ['firstName', 'lastName', 'topic'],
+  const [firstName, lastName, topic, valid] = useWatch({
+    name: ['firstName', 'lastName', 'topic', 'valid'],
   })
 
   return (
@@ -49,10 +60,9 @@ export default function ProfilePhotoPicker() {
                 alignItems: "flex-end",
               }}
             >
-            <div>{firstName} {lastName} topic: "{topic}"</div>
               <Zoom
                 key={"primary"}
-                in={false}
+                in={valid}
                 timeout={transitionDuration}
                 style={{
                   transitionDelay: `${true ? transitionDuration.exit : 0}ms`,
@@ -71,7 +81,7 @@ export default function ProfilePhotoPicker() {
               </Zoom>
               <Zoom
                 key={"secondary"}
-                in={false}
+                in={valid}
                 timeout={transitionDuration}
                 style={{
                   transitionDelay: `${true ? transitionDuration.exit : 0}ms`,
@@ -83,6 +93,7 @@ export default function ProfilePhotoPicker() {
                   Reject
                 </Fab>
               </Zoom>
+              <div>is valid {data.formState.isValid ? "valid": "not valid"}</div>
             </Box>
           </Grid>
         </Grid>

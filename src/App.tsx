@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SetupProfileForm from "./SetupProfileForm";
 import ProfilePhotoPicker from "./ProfilePhotoPicker";
 //import UnsplashUploader from "./UnsplashReact";
-import {FormContainer, TextFieldElement} from 'react-hook-form-mui'
+import {FormContainer} from 'react-hook-form-mui'
 
 // routing
 
@@ -22,7 +22,7 @@ export default function SetupProfile() {
   return (
     <ThemeProvider theme={theme}>
       <FormContainer
-        defaultValues={{firstName: '', lastName: '', topic: '', other: ''}}
+        defaultValues={{firstName: '', lastName: '', topic: '', valid: false}}
         onSuccess={data => console.log(data)}
         >
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -48,7 +48,7 @@ export default function SetupProfile() {
               <SetupProfileForm />
             </Box>
           </Grid>
-          <ProfilePhotoPicker />
+          <ProfilePhotoPicker  />
       </Grid>
       </FormContainer>
     </ThemeProvider>

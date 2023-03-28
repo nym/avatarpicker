@@ -10,69 +10,90 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import {TextFieldElement, useWatch} from 'react-hook-form-mui'
+import {
+  TextFieldElement,
+  useWatch,
+  useFormContext,
+} from "react-hook-form-mui";
+import { useState } from "react";
+import { FormProps } from "./FormProps";
 
 import { createTheme } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function SetupProfileForm() {
-    
+  const data = useFormContext();
+
+  const [values, setValues] = useState<FormProps>();
+
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
 
   const [selectTopic, setSelectTopic] = React.useState("");
-  //const [topic, setTopic] = React.useState("");
-  let [firstName, lastName, topic] = useWatch({
-    name: ['firstName', 'lastName', 'topic'],
-  })
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectTopic(event.target.value);
-    if (event.target.value !== 'other') {
-        topic = event.target.value;
+
+    
+    if (event.target.value !== "other") {
+        // this doesn't seem to do anything
+        let v: FormProps = {firstName: data.getValues("firstName"), lastName: data.getValues("lastName"), topic: "sports", valid: true}
+        setValues(v);
+        //this does though
+        data.setValue("topic", event.target.value);
+        data.setValue("valid", data.formState.isValid);
+    }
+    else {
+        data.setValue("topic", "");
+        // TODO: hookup a better way to determine if valid based on FormContainer
+        data.setValue("valid", false);
     }
   };
 
   const handleOtherChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    topic = event.target.value;
+    let v: FormProps = {firstName: data.getValues("firstName"), lastName: data.getValues("lastName"), topic: "wildlife", valid: true}
+    setValues(v);
+    console.log(data.formState.isValid);
+    data.setValue("valid", data.formState.isValid);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-        firstName: data.get("firstName"),
-        lastName: data.get("lastName"),
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
     });
   };
-  
+
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
-        <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextFieldElement
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextFieldElement
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Surname"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
+    <Box sx={{ mt: 5 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextFieldElement
+            autoComplete="given-name"
+            name="firstName"
+            required
+            fullWidth
+            id="firstName"
+            label="First Name"
+            autoFocus
+          />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextFieldElement
+            required
+            fullWidth
+            id="lastName"
+            label="Surname"
+            name="lastName"
+            autoComplete="family-name"
+          />
+        </Grid>
+      </Grid>
+      <div>{data.formState.isValid}</div>
       <Zoom
         key={"pic"}
         in={true}
@@ -103,24 +124,23 @@ export default function SetupProfileForm() {
           <FormHelperText>
             This will help you pick a unique photo for every time you login
           </FormHelperText>
-          
-          <Zoom in={selectTopic === 'other'}
-          >
+
+          <Zoom in={selectTopic === "other"}>
             <div>
-                <TextFieldElement
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="other"
-                    label="Other"
-                    type="text"
-                    id="other"
-                    onChange={handleOtherChange}
-                />
-                <FormHelperText>
-                    When you type, the image to the right will update based on your
-                    input
-                </FormHelperText>
+              <TextFieldElement
+                margin="normal"
+                required={selectTopic === "other"}
+                fullWidth
+                name="topic"
+                label="Other"
+                type="text"
+                id="topic"
+                onChange={handleOtherChange}
+              />
+              <FormHelperText>
+                When you type, the image to the right will update based on your
+                input
+              </FormHelperText>
             </div>
           </Zoom>
         </FormControl>
