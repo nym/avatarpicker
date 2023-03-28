@@ -23,7 +23,8 @@ export default function SetupProfileForm() {
   };
 
   const [selectTopic, setSelectTopic] = React.useState("");
-  const [firstName, lastName, topic] = useWatch({
+  //const [topic, setTopic] = React.useState("");
+  let [firstName, lastName, topic] = useWatch({
     name: ['firstName', 'lastName', 'topic'],
   })
 
@@ -35,7 +36,7 @@ export default function SetupProfileForm() {
   };
 
   const handleOtherChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTopic(event.target.value);
+    topic = event.target.value;
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

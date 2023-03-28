@@ -49,7 +49,7 @@ export default function ProfilePhotoPicker() {
                 alignItems: "flex-end",
               }}
             >
-            <div>{firstName} {lastName} {topic}</div>
+            <div>{firstName} {lastName} topic: "{topic}"</div>
               <Zoom
                 key={"primary"}
                 in={false}
