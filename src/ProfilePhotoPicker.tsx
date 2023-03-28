@@ -7,9 +7,8 @@ import Zoom from "@mui/material/Zoom";
 import { Fab } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-
-
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {FormContainer, TextFieldElement, useWatch} from 'react-hook-form-mui'
+import { createTheme } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function ProfilePhotoPicker() {
@@ -17,6 +16,9 @@ export default function ProfilePhotoPicker() {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
+  const [firstName, lastName, topic] = useWatch({
+    name: ['firstName', 'lastName', 'topic'],
+  })
 
   return (
     <Grid
@@ -47,6 +49,7 @@ export default function ProfilePhotoPicker() {
                 alignItems: "flex-end",
               }}
             >
+            <div>{firstName} {lastName} {topic}</div>
               <Zoom
                 key={"primary"}
                 in={false}

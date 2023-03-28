@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,24 +8,29 @@ import Grid from "@mui/material/Grid";
 
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
+
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import {TextFieldElement, useWatch} from 'react-hook-form-mui'
 
 import { createTheme } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function SetupProfileForm() {
+    
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
 
   const [selectTopic, setSelectTopic] = React.useState("");
-  const [topic, setTopic] = React.useState("");
+  const [firstName, lastName, topic] = useWatch({
+    name: ['firstName', 'lastName', 'topic'],
+  })
 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectTopic(event.target.value);
-    if (event.target.value != 'other') {
-        setTopic(event.target.value);
+    if (event.target.value !== 'other') {
+        topic = event.target.value;
     }
   };
 
@@ -47,7 +51,7 @@ export default function SetupProfileForm() {
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
         <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextFieldElement
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -58,7 +62,7 @@ export default function SetupProfileForm() {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextFieldElement
                   required
                   fullWidth
                   id="lastName"
@@ -102,7 +106,7 @@ export default function SetupProfileForm() {
           <Zoom in={selectTopic === 'other'}
           >
             <div>
-                <TextField
+                <TextFieldElement
                     margin="normal"
                     required
                     fullWidth
@@ -120,7 +124,6 @@ export default function SetupProfileForm() {
           </Zoom>
         </FormControl>
       </Zoom>
-      <div hidden={!topic}>You picked { topic }</div>
     </Box>
   );
 }

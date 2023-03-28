@@ -30,6 +30,8 @@ yarn add @fontsource/roboto
 yarn add @mui/icons-material
 yarn add cypress
 yarn add unsplash-react
+yarn add react-hook-form react-hook-form-mui
+yarn add @mui/x-date-pickers @mui/icons-material
 ```
 
 Project Requirements:
@@ -67,8 +69,7 @@ Sample CI tests:
 ## TODO:
 [X] Build out first view with cra, that is the form route for /edit
 [ ] Add in test for that
-[ ] Create Picture Picker component
-[ ] Setup playbook?
+[X] Create Picture Picker component
 [ ] Get Picture Picker working with dummy data in cypress
 [ ] Write test
 [ ] Setup state for saving data based on dummy data spec
@@ -85,5 +86,5 @@ Sample CI tests:
 [X] Image Viewer & Accept/Reject Component
 [x] SetupProfileForm Component
 [ ] Profile Component
-[ ] CRUD State management for profiles
+[X] CRUD State management for user 
 [ ] Unsplash Helpers with unsplash-react 
