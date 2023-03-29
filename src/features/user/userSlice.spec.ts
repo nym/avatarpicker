@@ -9,8 +9,7 @@ describe("user reducer", () => {
   };
   it("should handle initial state", () => {
     expect(userReducer(undefined, { type: "unknown" })).toEqual({
-      value: 0,
-      status: "idle"
+      data: {}
     });
   });
 
