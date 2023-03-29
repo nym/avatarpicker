@@ -1,21 +1,27 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import { FormContainer } from "react-hook-form-mui";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { Box, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import LandscapeIcon from "@mui/icons-material/Landscape";
+
 import SetupProfileForm from "./SetupProfileForm";
 import ProfilePhotoPicker from "./ProfilePhotoPicker";
 import { setUserData } from "../user/userSlice";
-import { useDispatch } from "react-redux";
 
 export type SetupPageProps = {};
 
 export const SetupPage: React.FC<SetupPageProps> = ({}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onSuccess = useCallback((data: Record<string, string>) => {
     dispatch(setUserData(data));
+    navigate('/')
   }, []);
 
   return (
