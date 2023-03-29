@@ -20,6 +20,14 @@ To run the tests type
 npm test
 ```
 
+## Running integration tests 
+```
+npm start
+npx cypress start
+```
+
+There is a sample test to show filling out the form.
+
 Initial Setup:
 --------------
 The following commands were used to seed this project:
@@ -71,10 +79,7 @@ Sample CI tests:
 [X] Setup helpers for unsplash-react
 [X] Create view for seeing the profile in view mode, with an edit button so it’s easy to switch between
 [X] Run pretify against code
-[ ] Add tests for view mode
-[ ] Get Picture Picker working with dummy data in cypress
-[ ] Add in test for /edit
-[ ] Add in test for /edit
+[X] Add in test for /edit
 
 ### Planned Features:
 [X] Form with Name Input, Surname Input, and Preferred Topic
