@@ -8,8 +8,8 @@ yarn create react-app . --template redux-typescript-mui
 ## Usage
 To get started, do the following:
 ```
-yarn install
-yarn start
+npm install
+npm start
 ```
 
 The development server will start on port 3000.
@@ -17,7 +17,7 @@ The development server will start on port 3000.
 ## Running tests
 To run the tests type
 ```
-yarn test
+npm test
 ```
 
 Initial Setup:
@@ -61,14 +61,11 @@ Sample CI tests:
 "Fill out profile page and topic `Cars` reject photo then accept next"
 “Submit form with 'Other' and a freeform text query for a topic"
 
-
-
 ---------
 
 
 ## TODO:
 [X] Build out first view with cra, that is the form route for /edit
-[ ] Add in test for /edit
 [X] Create Picture Picker component
 [X] Setup state for saving data based on dummy data spec
 [X] Setup helpers for unsplash-react
@@ -76,6 +73,7 @@ Sample CI tests:
 [X] Run pretify against code
 [ ] Add tests for view mode
 [ ] Get Picture Picker working with dummy data in cypress
+[ ] Add in test for /edit
 [ ] Add in test for /edit
 
 ### Planned Features:

@@ -21,7 +21,7 @@ export default function ProfilePhotoPicker() {
   }, [topic, customTopic]);
   const { formState: { isValid }, setValue } = useFormContext();
   const { imageUrl, results } = useUnsplashImage(topic === "other" ? customTopic : topic, counter);
-  useEffect(() => setValue("imageUrl", imageUrl));
+  useEffect(() => setValue("imageUrl", imageUrl), [imageUrl]);
 
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
