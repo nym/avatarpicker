@@ -30,6 +30,7 @@ export default function ProfilePhotoPicker() {
 
   return (
     <Grid
+      data-cy="edit-image-grid"
       item
       xs={false}
       sm={4}
