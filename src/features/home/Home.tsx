@@ -16,7 +16,7 @@ export default function Home() {
     if (!userData.imageUrl) {
       navigate('/edit');
     }
-  });
+  }, [navigate, userData.imageUrl]);
 
   if (userData.imageUrl) {
     imageUrl = userData.imageUrl;
