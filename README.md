@@ -68,23 +68,21 @@ Sample CI tests:
 
 ## TODO:
 [X] Build out first view with cra, that is the form route for /edit
-[ ] Add in test for that
+[ ] Add in test for /edit
 [X] Create Picture Picker component
-[ ] Get Picture Picker working with dummy data in cypress
-[ ] Write test
-[ ] Setup state for saving data based on dummy data spec
-[ ] Setup helpers for unsplash-react
-[ ] Setup tests for unsplash-react and dummy in data responses
-[ ] Create view for seeing the profile in view mode, with an edit button so it’s easy to switch between
+[X] Setup state for saving data based on dummy data spec
+[X] Setup helpers for unsplash-react
+[X] Create view for seeing the profile in view mode, with an edit button so it’s easy to switch between
+[X] Run pretify against code
 [ ] Add tests for view mode
-[ ] Review work
-[ ] Run pretify against code
+[ ] Get Picture Picker working with dummy data in cypress
+[ ] Add in test for /edit
 
 ### Planned Features:
 [X] Form with Name Input, Surname Input, and Preferred Topic
-[ ] Preferred Topic Dropdown Component
+[X] Preferred Topic Dropdown Component
 [X] Image Viewer & Accept/Reject Component
 [x] SetupProfileForm Component
-[ ] Profile Component
+[X] Profile Component
 [X] CRUD State management for user 
-[ ] Unsplash Helpers with unsplash-react 
+[X] Unsplash Helpers with unsplash-react 
