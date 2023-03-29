@@ -21,6 +21,8 @@ npm test
 ```
 
 ## Running integration tests 
+![Cypress](/public/screenshot.png "Cypress CI/CD")
+
 ```
 npm start
 npx cypress start
@@ -62,30 +64,3 @@ Further Notes:
 - Simple styling / standard user-experience design guidelines
 - Use state management system
 - Identify what design patterns are used
-
-Sample CI tests:
-“View Edit your Profile Page”
-"Fill out profile page with topic `Wildlife` and accept photo”
-"Fill out profile page and topic `Cars` reject photo then accept next"
-“Submit form with 'Other' and a freeform text query for a topic"
-
----------
-
-
-## TODO:
-[X] Build out first view with cra, that is the form route for /edit
-[X] Create Picture Picker component
-[X] Setup state for saving data based on dummy data spec
-[X] Setup helpers for unsplash-react
-[X] Create view for seeing the profile in view mode, with an edit button so it’s easy to switch between
-[X] Run pretify against code
-[X] Add in test for /edit
-
-### Planned Features:
-[X] Form with Name Input, Surname Input, and Preferred Topic
-[X] Preferred Topic Dropdown Component
-[X] Image Viewer & Accept/Reject Component
-[x] SetupProfileForm Component
-[X] Profile Component
-[X] CRUD State management for user 
-[X] Unsplash Helpers with unsplash-react 
